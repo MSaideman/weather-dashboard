@@ -17,7 +17,7 @@ function getCurrentWeather () {
     let currentWeatherHTML = `
     <h3>${data.name} ${currentTime}<img src="${icon}"></h3>
     <ul class="list-unstyled">
-        <li>Temperature: ${data.main.temp}&#8457;</li>
+        <li>Temperature: ${Math.round(data.main.temp)}&#8457;</li>
         <li>Humidity: ${data.main.humidity}%</li>
         <li>Wind Speed: ${data.wind.speed} mph</li>
         <li id="uvIndex">UV Index:</li>
@@ -58,7 +58,33 @@ function getCurrentWeather () {
 
 // 5 day forecast with the same data as before
 function getFiveDayForecast () {
-
+    let searchCity = $('#search-city').val();
+    searchCity = $('#search-city').val();
+    var URL = "https://api.openweathermap.org/data/2.5/weather?q=" + searchCity + "&units=imperial" + "&APPID=" + APIkey;
+ fetch(URL)
+ .then((data) => {
+     return data.json()})
+ .then(data => {
+    var icon = "https://openweathermap.org/img/w/" + data.weather[0].icon + ".png";
+    var futureTime = moment().format("l");
+    
+    for (i = 0; i < data.list.length; i++) {
+        var dayData = data.list[i];
+        let iconURL = "https://openweathermap.org/img/w/" + dayData.weather[0].icon + ".png";
+        if (data.list === true) {
+        futureWeatherHTML +=
+        `<h3>${dayData.name} ${futureTime}<img src="${icon}"></h3>
+        <ul class="list-unstyled">
+            <li>Temperature: ${Math.round(dayData.main.temp)}&#8457;</li>
+            <li><img src="${iconURL}"></li>
+            <li>Humidity: ${dayData.main.humidity}%</li>
+            <li>Wind Speed: ${dayData.wind.speed} mph</li>
+            <li id="uvIndex">UV Index:</li>
+        </ul>`;
+        }
+        }
+        $('#five-day-forecast').html(futureWeatherHTML);
+    })
 }
 
 
@@ -70,12 +96,12 @@ $('#search-button').on("click", (event) => {
 });
 
 
-// store seached cities
-function storeCity (){
+// // store seached cities
+// function storeCity (){
 
-}
+// }
 
-// clear searched cities
-function clearCity (){
+// // clear searched cities
+// function clearCity (){
 
-}
+// }
