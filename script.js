@@ -62,16 +62,15 @@ function getFiveDayForecast () {
     searchCity = $('#search-city').val();
     var URL = "https://api.openweathermap.org/data/2.5/weather?q=" + searchCity + "&units=imperial" + "&APPID=" + APIkey;
  fetch(URL)
- .then((data) => {
-     return data.json()})
- .then(data => {
-    var icon = "https://openweathermap.org/img/w/" + data.weather[0].icon + ".png";
-    var futureTime = moment().format("l");
-    
-    for (i = 0; i < data.list.length; i++) {
-        var dayData = data.list[i];
+ .then((dataf) => {
+     return dataf.json()})
+ .then(dataf => {
+    // var icon = "https://openweathermap.org/img/w/" + data.weather[0].icon + ".png";
+    // var futureTime = moment().format("l");
+    $('#five-day-forecast').empty();
+    for (i = 0; i < 5; i++) {
+        var dayData = dataf.list[i];
         let iconURL = "https://openweathermap.org/img/w/" + dayData.weather[0].icon + ".png";
-        if (data.list === true) {
         futureWeatherHTML +=
         `<h3>${dayData.name} ${futureTime}<img src="${icon}"></h3>
         <ul class="list-unstyled">
@@ -81,7 +80,6 @@ function getFiveDayForecast () {
             <li>Wind Speed: ${dayData.wind.speed} mph</li>
             <li id="uvIndex">UV Index:</li>
         </ul>`;
-        }
         }
         $('#five-day-forecast').html(futureWeatherHTML);
     })
