@@ -7,21 +7,20 @@ function getCurrentWeather () {
     let searchCity = $('#search-city').val();
     searchCity = $('#search-city').val();
     var URL = "https://api.openweathermap.org/data/2.5/weather?q=" + searchCity + "&units=imperial" + "&APPID=" + APIkey;
-
  fetch(URL)
  .then((data) => {
-     data.json()})
+     return data.json()})
 
  .then(data => {
-    var icon = "https://openweathermap.org/img/w/" + data.weather[0].icon + ".png";
+    var icon = "https://openweathermap.org/img/w/" + data.current.weather.icon + ".png";
     currentTime = data.dt;
     let currentWeatherHTML = `
     <h3>${data.name} ${currentTime.format("(MM/DD/YY)")}<img src="${icon}"></h3>
     <ul class="list-unstyled">
-        <li>Temperature: ${data.main.temp}&#8457;</li>
-        <li>Humidity: ${data.main.humidity}%</li>
-        <li>Wind Speed: ${data.wind.speed} mph</li>
-        <li>UV Index: ${data.main.uvi}</li>
+        <li>Temperature: ${data.current.temp}&#8457;</li>
+        <li>Humidity: ${data.current.humidity}%</li>
+        <li>Wind Speed: ${data.current.wind_speed} mph</li>
+        <li>UV Index: ${data.current.uvi}</li>
     </ul>`;
     // Append the results to the DOM
     $('#current-weather').html(currentWeatherHTML);
