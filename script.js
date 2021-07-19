@@ -10,17 +10,17 @@ function getCurrentWeather () {
  fetch(URL)
  .then((data) => {
      return data.json()})
-
  .then(data => {
-    var icon = "https://openweathermap.org/img/w/" + data.current.weather.icon + ".png";
-    currentTime = data.dt;
+     console.log(data);
+    var icon = "https://openweathermap.org/img/w/" + data.weather[0].icon + ".png";
+    var currentTime = moment().format("l");
     let currentWeatherHTML = `
-    <h3>${data.name} ${currentTime.format("(MM/DD/YY)")}<img src="${icon}"></h3>
+    <h3>${data.name} ${currentTime}<img src="${icon}"></h3>
     <ul class="list-unstyled">
-        <li>Temperature: ${data.current.temp}&#8457;</li>
-        <li>Humidity: ${data.current.humidity}%</li>
-        <li>Wind Speed: ${data.current.wind_speed} mph</li>
-        <li>UV Index: ${data.current.uvi}</li>
+        <li>Temperature: ${data.main.temp}&#8457;</li>
+        <li>Humidity: ${data.main.humidity}%</li>
+        <li>Wind Speed: ${data.wind.speed} mph</li>
+        // <li>UV Index:</li>
     </ul>`;
     // Append the results to the DOM
     $('#current-weather').html(currentWeatherHTML);
