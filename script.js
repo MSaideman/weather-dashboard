@@ -6,9 +6,7 @@ searchCity = '';
 function getCurrentWeather () {
     let searchCity = $('#search-city').val();
     searchCity = $('#search-city').val();
-    var lat = data.coord.lat;
-    var long = data.coord.long;
-    var URL = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&exclude=${part}&appid=${APIkey}`;
+    var URL = "https://api.openweathermap.org/data/2.5/weather?q=" + searchCity + "&units=imperial" + "&APPID=" + APIkey;
 
  fetch(URL)
  .then((data) => {
