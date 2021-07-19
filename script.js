@@ -20,10 +20,38 @@ function getCurrentWeather () {
         <li>Temperature: ${data.main.temp}&#8457;</li>
         <li>Humidity: ${data.main.humidity}%</li>
         <li>Wind Speed: ${data.wind.speed} mph</li>
-        // <li>UV Index:</li>
+        <li id="uvIndex">UV Index:</li>
     </ul>`;
     // Append the results to the DOM
     $('#current-weather').html(currentWeatherHTML);
+    var currentLat = data.coord.lat;
+    var currentLong = data.coord.lon;
+    var uvURL = "api.openweathermap.org/data/2.5/uvi?lat=" + currentLat + "&lon=" + currentLong + "&APPID=" + APIkey;
+    uvURL = "https://cors-anywhere.herokuapp.com/" + uvURL;
+    fetch(uvURL)
+    .then((data) => {
+        return data.json();
+    })
+    .then ((data) => {
+        var uvIndex = data.value;
+        $('#uvIndex').html(`UV Index: <span id="uvSeverity"> ${uvIndex} </span>`);
+        if (uvIndex < 3) {
+            $('#uvSeverity').attr("class", "low");
+        }
+        else if (uvIndex > 3 && uvIndex < 8) {
+            $('#uvSeverity').attr("class", "moderate");
+        }
+        else if (uvIndex > 6 && uvIndex < 8) {
+            $('#uvSeverity').attr("class", "high");
+        }
+        else if (uvIndex > 8 && uvIndex < 10) {
+            $('#uvSeverity').attr("class", "very-high");
+        }
+        else if (uvIndex > 10) {
+            $('#uvSeverity').attr("class", "extreme");
+        }
+    }
+    )
  })
 
 }

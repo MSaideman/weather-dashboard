@@ -26,3 +26,23 @@
 
 #five-day-forecast {
 }
+
+.low {
+  color: green;
+}
+
+.moderate {
+  color: yellow;
+}
+
+.high {
+  color: orange;
+}
+
+.very-high {
+  color: red;
+}
+
+.extreme {
+  color: violet;
+}
