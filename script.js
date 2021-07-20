@@ -60,7 +60,6 @@ function getCurrentWeather () {
 function getFiveDayForecast () {
     let searchCity = $('#search-city').val();
     searchCity = $('#search-city').val();
-    console.log("in here")
     for (let i = 0; i < 5; i++) {
         var URL = "https://api.openweathermap.org/data/2.5/weather?q=" + searchCity + "&units=imperial" + "&dt=" + ((Date.now()) - ((i+1)*86400*1000)) + "&APPID=" + APIkey;
         fetch(URL)
@@ -68,18 +67,17 @@ function getFiveDayForecast () {
             return dataf.json()
         })
         .then(dataf => {
-            console.log(dataf)
             var icon = "https://openweathermap.org/img/w/" + dataf.weather[0].icon + ".png";
             futureWeatherHTML += `
-            <h3>${dataf.name} ${new Date((Date.now()) - ((i+1)*86400*1000)).toLocaleString()}<img src="${icon}"></h3>
+            <h3>${dataf.name} ${new Date((Date.now()) - ((i+1)*86400*1000)).toLocaleDateString()}</h3>
             <ul class="list-unstyled">
+                <li><img src="${icon}"></li>
                 <li>Temperature: ${Math.round(dataf.main.temp)}&#8457;</li>
                 <li>Humidity: ${dataf.main.humidity}%</li>
-                <li>Wind Speed: ${dataf.wind.speed} mph</li>
-                <li id="uvIndexF">UV Index:</li>
             </ul>`;
             $('#five-day-forecast').html(futureWeatherHTML);
         })
+
     };
 }
 
