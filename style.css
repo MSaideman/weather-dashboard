@@ -6,6 +6,13 @@
   text-align: center;
 }
 
+.weather-card {
+  width: 9rem;
+  background-color: #00308f;
+  color: white;
+  text-align: center;
+}
+
 #search-city {
 }
 

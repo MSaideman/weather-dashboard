@@ -69,8 +69,9 @@ function getFiveDayForecast () {
         .then(dataf => {
             var icon = "https://openweathermap.org/img/w/" + dataf.weather[0].icon + ".png";
             futureWeatherHTML += `
-            <h3>${dataf.name} ${new Date((Date.now()) - ((i+1)*86400*1000)).toLocaleDateString()}</h3>
-            <ul class="list-unstyled">
+            <div class="weather-card card m-2 p0">
+            <ul class="list-unstyled p-3">
+                <li>${dataf.name} ${new Date((Date.now()) - ((i+1)*86400*1000)).toLocaleDateString()}</li>
                 <li><img src="${icon}"></li>
                 <li>Temperature: ${Math.round(dataf.main.temp)}&#8457;</li>
                 <li>Humidity: ${dataf.main.humidity}%</li>
