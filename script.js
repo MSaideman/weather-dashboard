@@ -3,6 +3,8 @@ const APIkey = 'c9299c81fa72cf0649fc417ca5d0c2b7'
 searchCity = '';
 const fiveDayForecast = {}
 var futureWeatherHTML = '';
+var storedCity = '';
+
 // use search input to display today's date, current conditions (temp, humidity, wind speed, UV-index)
 function getCurrentWeather () {
     let searchCity = $('#search-city').val();
@@ -52,6 +54,26 @@ function getCurrentWeather () {
         }
     }
     )
+    var lastSearchedCityArr = [];
+    $("#list").each(function() {
+        var key = $(this).find("#search-city").val();
+        lastSearchedCityArr[key] = value;
+    });
+
+    lastSearchedCityArr.push(searchCity);
+    localStorage.setItem("stored city", JSON.stringify(lastSearchedCityArr || []));
+    console.log(lastSearchedCityArr);
+
+    function showStoredCities() {
+        $(".btn-vertical").empty();
+        for (var i=0; i < lastSearchedCityArr.length; i++) {
+            var listItem = $('<button>');
+            listItem.attr("city", lastSearchedCityArr[i]);
+            listItem.text(lastSearchedCityArr[i]);
+            $(".btn-vertical").append(listItem);
+        }
+    }
+    showStoredCities();
  })
 
 }
@@ -88,16 +110,5 @@ $('#search-button').on("click", (event) => {
     currentCity = $('#search-city').val();
     getCurrentWeather(event);
 
-    getFiveDayForecast()
+    getFiveDayForecast();
 });
-
-
-// // store seached cities
-// function storeCity (){
-
-// }
-
-// // clear searched cities
-// function clearCity (){
-
-// }
