@@ -6,6 +6,7 @@
 .weather-card {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   flex-wrap: wrap;
   max-height: 200px;
   width: 9rem;
