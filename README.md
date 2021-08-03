@@ -21,7 +21,7 @@ THEN I am presented with a 5-day forecast that displays the date, an icon repres
 WHEN I click on a city in the search history
 THEN I am again presented with current and future conditions for that city
 
-![screencapture-file-Users-mackenziesaideman-Bootcamp2021-weather-dashboard-index-html-2021-07-20-08_38_38](https://user-images.githubusercontent.com/82477037/126343496-95921664-5e27-42fe-afc3-a9ef5d6564d4.png)
+![screencapture-msaideman-github-io-project-portfolio-images-MackenzieSaideman2021-08-pdf-2021-08-03-13_58_23](https://user-images.githubusercontent.com/82477037/128063805-4defb22f-dfb9-4d1d-88e7-78e123730e2b.png)
 
 Copyright (c) 2012-2021 Scott Chacon and others
 
