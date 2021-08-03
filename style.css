@@ -1,6 +1,3 @@
-/* #header {
-} */
-
 #header h1 {
   background-image: linear-gradient(to right, #7cb9e8, #0066b2);
   text-align: center;
@@ -17,26 +14,16 @@
   text-align: center;
 }
 
-/* #search-city {
+.clear-btn {
+  background-color: white;
+  color: #00308f;
+  border-radius: 0.25em;
+  border-color: white;
+  border-style: solid;
+  font-size: 1em;
+  border-radius: 0.5em;
+  padding: 0.2em;
 }
-
-#search-button {
-}
-
-#search-error {
-}
-
-#city-results {
-}
-
-#clear-storage {
-}
-
-#current-weather {
-}
-
-#five-day-forecast {
-} */
 
 .low {
   color: green;
