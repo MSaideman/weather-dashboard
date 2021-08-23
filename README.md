@@ -1,5 +1,7 @@
 # weather-dashboard
 
+## Description
+
 Github URL: https://github.com/MSaideman/weather-dashboard
 Deployed URL: https://msaideman.github.io/weather-dashboard/
 
@@ -21,7 +23,19 @@ THEN I am presented with a 5-day forecast that displays the date, an icon repres
 WHEN I click on a city in the search history
 THEN I am again presented with current and future conditions for that city
 
-![screencapture-msaideman-github-io-project-portfolio-images-MackenzieSaideman2021-08-pdf-2021-08-03-13_58_23](https://user-images.githubusercontent.com/82477037/128063805-4defb22f-dfb9-4d1d-88e7-78e123730e2b.png)
+![screencapture-msaideman-github-io-weather-dashboard-2021-08-23-11_41_22](https://user-images.githubusercontent.com/82477037/130476532-4dbd43de-4993-4a33-997d-08f055b1c84f.png)
+
+## Installation
+
+OpenWeatherMaps API
+
+## Usage
+
+Click deployed URL to run app. Enter city in search box to find current weather in this city and a five-day forecast.
+
+## License
+
+This project is covered under the MIT license.
 
 Copyright (c) 2012-2021 Scott Chacon and others
 
@@ -43,3 +57,7 @@ NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
 LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
 OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+## Contact Information
+
+Please email me with any questions on this project: mbsaideman@gmail.com.
